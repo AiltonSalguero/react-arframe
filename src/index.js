@@ -1,21 +1,29 @@
-import 'aframe';
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {Box, Sphere, Cylinder, Plane, Sky, Text, Scene} from 'react-aframe-ar';
+import { Link, BrowserRouter } from 'react-router-dom'
+import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl';
+import Main from './components/main';
+import 'react-mdl/extra/material.css';   
+import 'react-mdl/extra/material.js';
+import './App.css';
 
-class AppScene extends React.Component {
-  render () {
+
+class App extends Component {
+  render() {
+    console.log('index');
     return (
-      <Scene>
-        <Box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow />
-        <Sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow />
-        <Cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow />
-        <Plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow />
-        <Sky color="#ECECEC" />
-        <Text value="Hello world, react-aframe!" align="center" position="0 2.3 -1.5" color="#7BC8A4" />
-      </Scene>
+      <BrowserRouter basename="/react-arframe">
+        <div className="demo-big-content">
+          <Layout>
+            <Content>
+              <div className="page-content" />
+              <Main />
+            </Content>
+          </Layout>
+        </div>
+      </BrowserRouter>
     );
   }
 }
 
-ReactDOM.render(<AppScene/>, document.querySelector('#sceneContainer'));
+ReactDOM.render(<App />, document.querySelector('#sceneContainer'));
